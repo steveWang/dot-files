@@ -1,5 +1,6 @@
 [user]
-	name = Steve Wang
-	email = steve.john.wang@gmail.com
+        name = Steve Wang
+        email = steve.john.wang@gmail.com
 [core]
-	editor = emacs
+        editor = emacs
+        whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
