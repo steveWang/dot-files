@@ -204,11 +204,11 @@
 
 (add-hook 'latex-mode-hook 'dvi-with-okular t)
 
-;; flymake mode for js.
+;; flymake mode for js. lintnode-start is handled by the emacs daemon,
+;; presumably.
 (require 'flymake-jslint)
 (add-hook 'js2-mode-hook
           (lambda () (flymake-mode t)))
-(lintnode-start)
 
 ;; flymake mode for haskell
 (autoload 'ghc-init "ghc" nil t)

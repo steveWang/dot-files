@@ -1,4 +1,12 @@
 # It's amusing. Sue me.
 alias genocide=killall
+
 # Typoes are unfortunate.
 alias ndoe=node
+
+# FF Nightly, when I want to test something.
+alias ff8='/home/steve/workspace/browsers/firefox/firefox'
+
+# Various supposedly useful aliases
+alias rm='rm -i'
+alias df='df -h'
