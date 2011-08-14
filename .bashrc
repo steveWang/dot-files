@@ -6,4 +6,4 @@ test -s ~/.colors && . ~/.colors || true
 stty -ixon
 
 # Denote current git branch in shell prompt.
-PS1="${WHITE}\$(date +%H:%M) ${NORMAL}$(ppwd \l)\u@\h:${WHITE}\w${YELLOW}\$(__git_ps1)${NORMAL}> "
+PS1="${CYAN}\$(date +%H:%M) ${GREEN}$(ppwd \l)\u@\h:${WHITE}\w${YELLOW}\$(__git_ps1)${NORMAL}> "
