@@ -3,7 +3,7 @@
         email = steve.john.wang@gmail.com
 [core]
         editor = emacs
-        whitespace = fix, indent-with-non-tab, -trailing-space, tabwidth=2
+        whitespace = fix, -indent-with-non-tab, trailing-space, tabwidth=2
         eol=lf
 [alias]
         br = branch
