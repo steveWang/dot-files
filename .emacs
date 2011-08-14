@@ -38,6 +38,12 @@
     (apply #'browse-url url args)))
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
+
+;; default viewer for auctex should be okular, not xdvi.
+(defun dvi-with-okular ()
+  (add-to-list 'tex-output-view-style 
+               (quote ("^dvi$" "." "okular %o %(outpage)"))))
+
 ;; autoload js2 mode.
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
@@ -48,6 +54,8 @@
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
+     ;; Use euphoria if in -nw mode, since blackboard is displayed
+     ;; poorly in this case.
      (if window-system
          (color-theme-blackboard)
        (color-theme-euphoria))))
@@ -193,11 +201,6 @@
                                "cleartimeout" "clearinterval" "require"
                                "module" "exports" "process" "__dirname"
                                "__filename"))
-
-;; default viewer for auctex should be okular, not xdvi.
-(defun dvi-with-okular ()
-  (add-to-list 'tex-output-view-style 
-               (quote ("^dvi$" "." "okular %o %(outpage)"))))
 
 (add-hook 'latex-mode-hook 'dvi-with-okular t)
 
