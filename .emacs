@@ -225,12 +225,6 @@
 (add-hook 'haskell-mode-hook (lambda () (flymake-mode)))
 (ghc-init)
 
-;; Flyspell *everything*.
-(dolist (hook '(text-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode 1))))
-(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode -1))))
-
 ;; Enable disabled commands.
 (put 'set-goal-column 'disabled nil)
 (put 'upcase-region 'disabled nil)
