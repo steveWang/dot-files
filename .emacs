@@ -30,6 +30,7 @@
 (setq inhibit-startup-message t)
 (set-default 'truncate-lines t)
 (set-default 'column-number-mode t)
+(set-default 'ido-mode t)
 
 ;; google chrome as default browser
 (defun browse-url-chrome (url &rest args)
@@ -130,6 +131,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+ '(auto-image-file-mode t)
  '(c-basic-offset 2)
  '(delete-selection-mode nil)
  '(erc-autoaway-message "idle... (autoaway after %i seconds of idletime)")
@@ -148,6 +150,10 @@
  '(exec-path (quote ("/home/steve/local/bin" "/home/steve/.cabal/bin" "/home/steve/bin" "/usr/local/bin" "/usr/bin" "/bin" "/usr/bin/x11" "/usr/x11r6/bin" "/usr/games" "/usr/lib/mit/bin" "/usr/lib/mit/sbin" "." "/usr/lib/emacs/23.3/x86_64-suse-linux")))
  '(global-mark-ring-max 32)
  '(hippie-expand-dabbrev-skip-space t)
+ '(ido-completion-buffer "")
+ '(ido-enable-regexp t)
+ '(ido-ignore-directories (quote ("\\`CVS/" "\\`\\.\\./" "\\`\\./" "\\.git/" "\\.svn/")))
+ '(ido-show-dot-for-dired t)
  '(jabber-account-list (quote (("stevejohnwang@chat.facebook.com" (:network-server . "chat.facebook.com") (:connection-type . network)) ("steve.john.wang@gmail.com" (:network-server . "talk.google.com") (:connection-type . ssl)))))
  '(jabber-autoaway-priority 10)
  '(jabber-autoaway-timeout 15)
@@ -196,7 +202,12 @@
  '(transient-mark-mode 1)
  '(undo-limit 1000000)
  '(undo-strong-limit 1200000)
+ '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify))
  '(user-mail-address "steve.john.wang@gmail.com")
+ '(which-func-maxout 500000)
+ '(which-func-modes (quote (emacs-lisp-mode c-mode c++-mode cperl-mode python-mode makefile-mode sh-mode diff-mode js2-mode haskell-mode ruby-mode)))
+ '(which-function-mode t)
+ '(whitespace-action (quote (auto-cleanup)))
  '(x-select-enable-clipboard t))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
