@@ -8,7 +8,8 @@
 
 ;; Use said function.
 (mapc 'load-dir-recursive (list "/home/steve/.emacs.d/elisp"
-                              "/home/steve/local/share/emacs/site-lisp"))
+                                "/home/steve/local/share/emacs/site-lisp"
+                                "/home/steve/.cabal/share/"))
 
 ;; zap-up-to-char is more useful than zap-to-char
 (autoload 'zap-up-to-char "misc"
@@ -60,9 +61,10 @@
          (color-theme-blackboard)
        (color-theme-euphoria))))
 
+
 ;; haskell-mode.
-(require 'haskell-mode)
 (load "/home/steve/.emacs.d/elisp/haskell-mode/haskell-site-file")
+(require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
@@ -124,16 +126,10 @@
 
 ;; custom variables. bleh.
 (custom-set-variables
-  ;; custom-set-variables was added by custom.
-  ;; if you edit it by hand, you could mess it up, so be careful.
-  ;; your init file should contain only one such instance.
-  ;; if there is more than one, they won't work right.
- '(tex-pdf-mode t)
- '(tex-source-correlate-method (quote synctex))
- '(tex-source-correlate-mode t)
- '(tex-source-correlate-start-server t)
- '(tex-view-program-list (quote (("okular" "okular --unique %o#src:%n%b"))))
- '(tex-view-program-selection (quote (((output-dvi style-pstricks) "okular") (output-dvi "okular") (output-pdf "okular") (output-html "okular"))))
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(c-basic-offset 2)
  '(delete-selection-mode nil)
  '(erc-autoaway-message "idle... (autoaway after %i seconds of idletime)")
@@ -150,6 +146,8 @@
  '(erc-try-new-nick-p nil)
  '(espresso-indent-level 2)
  '(exec-path (quote ("/home/steve/local/bin" "/home/steve/.cabal/bin" "/home/steve/bin" "/usr/local/bin" "/usr/bin" "/bin" "/usr/bin/x11" "/usr/x11r6/bin" "/usr/games" "/usr/lib/mit/bin" "/usr/lib/mit/sbin" "." "/usr/lib/emacs/23.3/x86_64-suse-linux")))
+ '(global-mark-ring-max 32)
+ '(hippie-expand-dabbrev-skip-space t)
  '(jabber-account-list (quote (("stevejohnwang@chat.facebook.com" (:network-server . "chat.facebook.com") (:connection-type . network)) ("steve.john.wang@gmail.com" (:network-server . "talk.google.com") (:connection-type . ssl)))))
  '(jabber-autoaway-priority 10)
  '(jabber-autoaway-timeout 15)
@@ -162,8 +160,8 @@
  '(jabber-muc-colorize-foreign t)
  '(jabber-muc-colorize-local t)
  '(jabber-use-global-history nil)
- '(jabber-vcard-avatars-publish nil t)
- '(jabber-vcard-avatars-retrieve nil t)
+ '(jabber-vcard-avatars-publish nil)
+ '(jabber-vcard-avatars-retrieve nil)
  '(js2-auto-indent-p t)
  '(js2-bounce-indent-p nil)
  '(js2-cleanup-whitespace t)
@@ -175,24 +173,36 @@
  '(js2-mode-indent-inhibit-undo t)
  '(js2-pretty-multiline-decl-indentation-p t)
  '(js2-skip-preprocessor-directives t)
+ '(kill-ring-max 100)
  '(lintnode-location "/home/steve/.emacs.d/elisp/lintnode")
  '(mark-even-if-inactive t)
+ '(mark-ring-max 32)
  '(message-confirm-send t)
  '(mm-inline-text-html-with-images t)
+ '(mode-require-final-newline (quote visit-save))
+ '(require-final-newline (quote visit-save))
  '(rmail-preserve-inbox t)
  '(rmail-remote-password nil)
  '(rmail-remote-password-required nil)
  '(save-interprogram-paste-before-kill t)
  '(scroll-bar-mode nil)
  '(standard-indent 2)
+ '(tex-pdf-mode t)
+ '(tex-source-correlate-method (quote synctex))
+ '(tex-source-correlate-mode t)
+ '(tex-source-correlate-start-server t)
+ '(tex-view-program-list (quote (("okular" "okular --unique %o#src:%n%b"))))
+ '(tex-view-program-selection (quote (((output-dvi style-pstricks) "okular") (output-dvi "okular") (output-pdf "okular") (output-html "okular"))))
  '(transient-mark-mode 1)
+ '(undo-limit 1000000)
+ '(undo-strong-limit 1200000)
  '(user-mail-address "steve.john.wang@gmail.com")
  '(x-select-enable-clipboard t))
 (custom-set-faces
-  ;; custom-set-faces was added by custom.
-  ;; if you edit it by hand, you could mess it up, so be careful.
-  ;; your init file should contain only one such instance.
-  ;; if there is more than one, they won't work right.
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(jabber-chat-prompt-local ((t (:foreground "#0aa" :weight bold))))
  '(jabber-roster-user-online ((t (:foreground "#69f" :slant normal :weight bold)))))
 
@@ -214,6 +224,12 @@
 (autoload 'ghc-init "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (flymake-mode)))
 (ghc-init)
+
+;; Flyspell *everything*.
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode -1))))
 
 ;; Enable disabled commands.
 (put 'set-goal-column 'disabled nil)
