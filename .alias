@@ -4,8 +4,9 @@ alias genocide=killall
 # Typoes are unfortunate.
 alias ndoe=node
 
-# FF Nightly, when I want to test something.
-alias ff8='/home/steve/workspace/browsers/firefox/firefox'
+# Various FF versions
+alias ff6='~/workspace/browsers/firefox-6.0b5/firefox'
+alias ff8='~/workspace/browsers/firefox-8.0a1/firefox'
 
 # Various supposedly useful aliases
 alias rm='rm -i'
