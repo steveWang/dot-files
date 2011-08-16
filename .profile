@@ -4,5 +4,3 @@ test -z "$PROFILEREAD" && . /etc/profile || true
 # understand how this works. Also seen in .bashrc.
 test -s ~/.env && . ~/.env || true
 test -s ~/.funcs && . ~/.funcs || true
-
-emacs --daemon -f lintnode-start

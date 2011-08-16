@@ -3,13 +3,13 @@
   (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
       (let* ((my-lisp-dir (expand-file-name str))
              (default-directory my-lisp-dir))
-        (setq load-path (cons my-lisp-dir load-path))
+        (normal-top-level-add-to-load-path '("."))
         (normal-top-level-add-subdirs-to-load-path))))
 
 ;; Use said function.
 (mapc 'load-dir-recursive (list "/home/steve/.emacs.d/elisp"
                                 "/home/steve/local/share/emacs/site-lisp"
-                                "/home/steve/.cabal/share/"))
+                                "/usr/share/emacs/site-lisp"))
 
 ;; zap-up-to-char is more useful than zap-to-char
 (autoload 'zap-up-to-char "misc"
@@ -30,7 +30,6 @@
 (setq inhibit-startup-message t)
 (set-default 'truncate-lines t)
 (set-default 'column-number-mode t)
-(set-default 'ido-mode t)
 
 ;; google chrome as default browser
 (defun browse-url-chrome (url &rest args)
@@ -122,7 +121,6 @@
       (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
 ;;; emacs/w3 configuration
-(setq load-path (cons "/usr/share/emacs/site-lisp" load-path))
 (condition-case () (require 'w3-auto "w3-auto") (error nil))
 
 ;; custom variables. bleh.
@@ -133,6 +131,9 @@
   ;; If there is more than one, they won't work right.
  '(auto-image-file-mode t)
  '(c-basic-offset 2)
+ '(cperl-autoindent-on-semi t)
+ '(cperl-font-lock nil)
+ '(cperl-hairy t)
  '(delete-selection-mode nil)
  '(erc-autoaway-message "idle... (autoaway after %i seconds of idletime)")
  '(erc-autoaway-mode t)
@@ -150,10 +151,6 @@
  '(exec-path (quote ("/home/steve/local/bin" "/home/steve/.cabal/bin" "/home/steve/bin" "/usr/local/bin" "/usr/bin" "/bin" "/usr/bin/x11" "/usr/x11r6/bin" "/usr/games" "/usr/lib/mit/bin" "/usr/lib/mit/sbin" "." "/usr/lib/emacs/23.3/x86_64-suse-linux")))
  '(global-mark-ring-max 32)
  '(hippie-expand-dabbrev-skip-space t)
- '(ido-completion-buffer "")
- '(ido-enable-regexp t)
- '(ido-ignore-directories (quote ("\\`CVS/" "\\`\\.\\./" "\\`\\./" "\\.git/" "\\.svn/")))
- '(ido-show-dot-for-dired t)
  '(jabber-account-list (quote (("stevejohnwang@chat.facebook.com" (:network-server . "chat.facebook.com") (:connection-type . network)) ("steve.john.wang@gmail.com" (:network-server . "talk.google.com") (:connection-type . ssl)))))
  '(jabber-autoaway-priority 10)
  '(jabber-autoaway-timeout 15)
@@ -225,11 +222,12 @@
 
 (add-hook 'latex-mode-hook 'dvi-with-okular t)
 
-;; flymake mode for js. lintnode-start is handled by the emacs daemon,
-;; presumably.
+;; flymake mode for js. This is actually JSHint, hacked to work with
+;;   lintnode. So this is hintnode, I guess?
 (require 'flymake-jslint)
 (add-hook 'js2-mode-hook
           (lambda () (flymake-mode t)))
+(lintnode-start)
 
 ;; flymake mode for haskell
 (autoload 'ghc-init "ghc" nil t)
@@ -240,3 +238,4 @@
 (put 'set-goal-column 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
