@@ -150,19 +150,30 @@
  '(espresso-indent-level 2)
  '(exec-path (quote ("/home/steve/local/bin" "/home/steve/.cabal/bin" "/home/steve/bin" "/usr/local/bin" "/usr/bin" "/bin" "/usr/bin/x11" "/usr/x11r6/bin" "/usr/games" "/usr/lib/mit/bin" "/usr/lib/mit/sbin" "." "/usr/lib/emacs/23.3/x86_64-suse-linux")))
  '(global-mark-ring-max 32)
+ '(gnus-check-bogus-newsgroups t)
+ '(gnus-select-method (quote (nnimap "imap.gmail.com" (nnimap-address "imap.gmail.com") (nnimap-server-port 993) (nnimap-stream ssl))))
  '(hippie-expand-dabbrev-skip-space t)
+ '(imap-log t)
  '(jabber-account-list (quote (("stevejohnwang@chat.facebook.com" (:network-server . "chat.facebook.com") (:connection-type . network)) ("steve.john.wang@gmail.com" (:network-server . "talk.google.com") (:connection-type . ssl)))))
+ '(jabber-activity-count-in-title t)
  '(jabber-autoaway-priority 10)
  '(jabber-autoaway-timeout 15)
  '(jabber-backlog-days nil)
  '(jabber-backlog-number 10)
  '(jabber-browse-buffer-format "jabber-browse:-%n")
+ '(jabber-connection-ssl-program nil)
  '(jabber-history-enable-rotation t)
  '(jabber-history-enabled t)
  '(jabber-mode-line-mode t)
  '(jabber-muc-colorize-foreign t)
  '(jabber-muc-colorize-local t)
+ '(jabber-post-connect-hooks (quote (jabber-send-current-presence jabber-muc-autojoin jabber-whitespace-ping-start jabber-keepalive-start jabber-vcard-avatars-find-current jabber-autoaway-start)))
+ '(jabber-roster-roll-up-group nil)
+ '(jabber-roster-show-bindings nil)
+ '(jabber-roster-show-empty-group t)
+ '(jabber-show-resources (quote always))
  '(jabber-use-global-history nil)
+ '(jabber-use-sasl t)
  '(jabber-vcard-avatars-publish nil)
  '(jabber-vcard-avatars-retrieve nil)
  '(js2-auto-indent-p t)
@@ -178,6 +189,7 @@
  '(js2-skip-preprocessor-directives t)
  '(kill-ring-max 100)
  '(lintnode-location "/home/steve/.emacs.d/elisp/lintnode")
+ '(mail-source-report-new-mail-interval 1)
  '(mark-even-if-inactive t)
  '(mark-ring-max 32)
  '(message-confirm-send t)
@@ -215,9 +227,10 @@
  '(jabber-roster-user-online ((t (:foreground "#69f" :slant normal :weight bold)))))
 
 ;; hack to make js2-global-externs actually have an effect.
-(set 'js2-global-externs (list "json" "console" "settimeout" "setinterval"
+(set 'js2-global-externs (list "JSON" "console" "settimeout" "setinterval"
                                "cleartimeout" "clearinterval" "require"
                                "module" "exports" "process" "__dirname"
+
                                "__filename"))
 
 (add-hook 'latex-mode-hook 'dvi-with-okular t)
