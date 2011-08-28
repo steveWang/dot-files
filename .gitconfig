@@ -5,6 +5,7 @@
         editor = emacs
         whitespace = fix, -indent-with-non-tab, trailing-space, tabwidth=2
         eol=lf
+	excludesfile = /home/steve/.gitignore
 [alias]
         br = branch
         co = checkout

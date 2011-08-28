@@ -2,11 +2,9 @@
 
 BASE=${PWD}
 
-for x in $BASE/.* ; do
-  fname=$(basename $x)
-  realdot=$fname
+for x in $BASE/.??* ; do
+    fname=$(basename $x)
 
-  echo Linking ~/$realdot to $x
-  ln -sf $x $HOME/$realdot
-
+    echo Linking ~/$fname to $x
+    ln -sf $x $HOME/$fname
 done
