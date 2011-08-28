@@ -21,6 +21,10 @@
 
 (require 'nnir)
 
+;; gnus daemon
+(gnus-demon-add-handler 'gnus-demon-scan-news 2 t)
+(gnus-demon-init)
+
 ;; get rid of useless bars.
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -142,11 +146,12 @@
  '(erc-fill-static-center 25)
  '(erc-insert-away-timestamp-function (quote erc-insert-timestamp-right))
  '(erc-insert-timestamp-function (quote erc-insert-timestamp-right))
- '(erc-nick "`steve")
+ '(erc-nick "stevew")
  '(erc-prompt "brillig >")
  '(erc-timestamp-format-left "[%a %b %e %y]")
  '(erc-timestamp-format-right " [%h:%m]  ")
  '(erc-try-new-nick-p nil)
+ '(erc-user-full-name "Steve Wang")
  '(espresso-indent-level 2)
  '(exec-path (quote ("/home/steve/local/bin" "/home/steve/.cabal/bin" "/home/steve/bin" "/usr/local/bin" "/usr/bin" "/bin" "/usr/bin/x11" "/usr/x11r6/bin" "/usr/games" "/usr/lib/mit/bin" "/usr/lib/mit/sbin" "." "/usr/lib/emacs/23.3/x86_64-suse-linux")))
  '(global-mark-ring-max 32)
@@ -195,6 +200,7 @@
  '(message-confirm-send t)
  '(mm-inline-text-html-with-images t)
  '(mode-require-final-newline (quote visit-save))
+ '(read-mail-command (quote gnus))
  '(require-final-newline (quote visit-save))
  '(rmail-preserve-inbox t)
  '(rmail-remote-password nil)
