@@ -8,7 +8,6 @@
 
 ;; Use said function.
 (mapc 'load-dir-recursive (list "/home/steve/.emacs.d/elisp"
-                                "/home/steve/local/share/emacs/site-lisp"
                                 "/usr/share/emacs/site-lisp"))
 
 ;; zap-up-to-char is more useful than zap-to-char
@@ -67,17 +66,11 @@
 
 
 ;; haskell-mode.
-(load "/home/steve/.emacs.d/elisp/haskell-mode/haskell-site-file")
-(require 'haskell-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+;; (load "/home/steve/.emacs.d/elisp/haskell-mode/haskell-site-file")
+;; (require 'haskell-mode)
+;; (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
-;; Magit
-(require 'magit)
-
-;; various additions for better jabber.
-(require 'hexrgb)
-(require 'ssl)
 
 ;; jabber itself!
 (require 'jabber-autoloads)
@@ -243,15 +236,15 @@
 
 ;; flymake mode for js. This is actually JSHint, hacked to work with
 ;;   lintnode. So this is hintnode, I guess?
-(require 'flymake-jslint)
-(add-hook 'js2-mode-hook
-          (lambda () (flymake-mode t)))
-(lintnode-start)
+;; (require 'flymake-jslint)
+;; (add-hook 'js2-mode-hook
+;;           (lambda () (flymake-mode t)))
+;; (lintnode-start)
 
-;; flymake mode for haskell
-(autoload 'ghc-init "ghc" nil t)
-(add-hook 'haskell-mode-hook (lambda () (flymake-mode)))
-(ghc-init)
+;; ;; flymake mode for haskell
+;; (autoload 'ghc-init "ghc" nil t)
+;; (add-hook 'haskell-mode-hook (lambda () (flymake-mode)))
+;; (ghc-init)
 
 ;; Enable disabled commands.
 (put 'set-goal-column 'disabled nil)
