@@ -8,8 +8,8 @@
 
 ;; Use said function.
 (mapc 'load-dir-recursive (list "/home/steve/local/share/emacs/site-lisp"
-                                "/home/steve/.emacs.d/elisp"
-                                "/home/steve/.emacs.d/elisp/writegood-mode"
+                                "/home/steve/.emacs.d/site-lisp"
+                                "/home/steve/.emacs.d/site-lisp/writegood-mode"
                                 "/usr/share/emacs/site-lisp"))
 
 ;; zap-up-to-char is more useful than zap-to-char
@@ -19,12 +19,6 @@
   \(fn arg char)"
   'interactive)
 (global-set-key "\M-z" 'zap-up-to-char)
-
-(require 'nnir)
-
-;; gnus daemon
-(gnus-demon-add-handler 'gnus-demon-scan-news 2 t)
-(gnus-demon-init)
 
 ;; get rid of useless bars.
 (menu-bar-mode -1)
@@ -59,7 +53,7 @@
 
 ;; load color-theme stuff.
 (require 'color-theme)
-(load "/home/steve/.emacs.d/elisp/color-theme-blackboard.el")
+(load "/home/steve/.emacs.d/site-lisp/color-theme-blackboard.el")
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
@@ -71,7 +65,7 @@
 
 
 ;; haskell-mode.
-;; (load "/home/steve/.emacs.d/elisp/haskell-mode/haskell-site-file")
+;; (load "/home/steve/.emacs.d/site-lisp/haskell-mode/haskell-site-file")
 ;; (require 'haskell-mode)
 ;; (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 ;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
@@ -125,10 +119,10 @@
 
 ;; custom variables. bleh.
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(LaTeX-mode-hook (quote (preview-mode-setup writegood-mode)))
  '(auto-image-file-mode t)
  '(c-basic-offset 2)
@@ -180,7 +174,7 @@
  '(js2-pretty-multiline-decl-indentation-p t)
  '(js2-skip-preprocessor-directives t)
  '(kill-ring-max 100)
- '(lintnode-location "/home/steve/.emacs.d/elisp/lintnode")
+ '(lintnode-location "/home/steve/.emacs.d/site-lisp/lintnode")
  '(mail-source-report-new-mail-interval 1)
  '(mark-even-if-inactive t)
  '(mark-ring-max 32)
@@ -212,10 +206,11 @@
  '(whitespace-action (quote (auto-cleanup)))
  '(x-select-enable-clipboard t))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#0C1021" :foreground "#F8F8F8" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
  '(jabber-activity-personal-face ((t (:foreground "#0088FF" :weight bold))))
  '(jabber-chat-prompt-local ((t (:foreground "#0aa" :weight bold))))
  '(jabber-roster-user-online ((t (:foreground "#69f" :slant normal :weight bold)))))
