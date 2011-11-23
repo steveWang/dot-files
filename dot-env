@@ -9,7 +9,4 @@ export WINEARCH=win32
 
 export CPATH=/opt/AMDAPP/include:$CPATH
 export PYTHONPATH=/home/steve/local/lib64/python2.7/site-packages/:$PYTHONPATH
-
-# My IP.
-# export ipv4=`curl ipv4.icanhazip.com`
-# export ipv6=`curl ipv6.icanhazip.com`
+export GIT_PS1_SHOWDIRTYSTATE=true

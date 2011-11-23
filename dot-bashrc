@@ -1,9 +1,12 @@
 test -s ~/.alias && . ~/.alias || true
 test -s ~/.colors && . ~/.colors || true
+test -s ~/.env && . ~/.env || true
 
 # Config starts here.
 # C-s is useful as incremental search.
 stty -ixon
 
 # Denote current git branch in shell prompt.
-PS1="${CYAN}\$(date +%H:%M) ${GREEN}$(ppwd \l)\u@\h:${WHITE}\w${YELLOW}\$(__git_ps1)${NORMAL}> "
+source /etc/bash_completion.d/git
+PS1="${CYAN}\$(date +%H:%M) ${GREEN}\u@\h:${WHITE}\w${YELLOW}\$(__git_ps1)${NORMAL}> "
+xmodmap ~/.xmodmap-`uname -n`

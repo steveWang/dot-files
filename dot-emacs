@@ -7,11 +7,10 @@
         (normal-top-level-add-subdirs-to-load-path))))
 
 ;; Use said function.
-(mapc 'load-dir-recursive (list "/home/steve/local/share/emacs/site-lisp"
-                                "/home/steve/.emacs.d/site-lisp"
-                                "/home/steve/.emacs.d/site-lisp/writegood-mode"
-                                "/usr/share/emacs/site-lisp"))
-
+(mapc 'load-dir-recursive (list "/home/steve/.emacs.d/elisp"
+                                "/home/steve/local/lib/erlang/lib/tools-2.6.6.5/emacs"
+                                "/home/steve/.emacs.d/elisp/writegood-mode"))
+(require 'erlang-start)
 ;; zap-up-to-char is more useful than zap-to-char
 (autoload 'zap-up-to-char "misc"
   "kill up to, but not including argth occurrence of char.
@@ -23,6 +22,11 @@
 ;; get rid of useless bars.
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+(setq erlang-root-dir "/home/steve/local/lib/erlang")
+(setq exec-path (cons "/home/steve/local/bin" exec-path))
+(require 'erlang-start)
 
 ;; various useful customizations
 (blink-cursor-mode 0)
@@ -42,18 +46,13 @@
 (require 'writegood-mode)
 (global-set-key "\C-cg" 'writegood-mode)
 
-;; default viewer for auctex should be okular, not xdvi.
-(defun dvi-with-okular ()
-  (add-to-list 'tex-output-view-style 
-               (quote ("^dvi$" "." "okular %o %(outpage)"))))
-
 ;; autoload js2 mode.
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 ;; load color-theme stuff.
 (require 'color-theme)
-(load "/home/steve/.emacs.d/site-lisp/color-theme-blackboard.el")
+(load "/home/steve/.emacs.d/elisp/color-theme-blackboard.el")
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
@@ -62,14 +61,6 @@
      (if window-system
          (color-theme-blackboard)
        (color-theme-euphoria))))
-
-
-;; haskell-mode.
-;; (load "/home/steve/.emacs.d/site-lisp/haskell-mode/haskell-site-file")
-;; (require 'haskell-mode)
-;; (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-
 
 ;; jabber itself!
 (require 'jabber-autoloads)
@@ -102,7 +93,7 @@
 (c-set-offset 'case-label '+)
 
 ;; assembly mode
-(require 'asm86-mode)
+(autoload 'asm86-mode "asm86-mode" nil t)
 (setq auto-mode-alist
       (append '(("\\.asm$" . asm86-mode) ("\\.s$" . asm86-mode) ("\\.inc$" . asm86-mode)) auto-mode-alist))
 (add-hook 'asm86-mode-hook 'turn-on-font-lock)
@@ -174,7 +165,7 @@
  '(js2-pretty-multiline-decl-indentation-p t)
  '(js2-skip-preprocessor-directives t)
  '(kill-ring-max 100)
- '(lintnode-location "/home/steve/.emacs.d/site-lisp/lintnode")
+ '(lintnode-location "/home/steve/.emacs.d/elisp/lintnode")
  '(mail-source-report-new-mail-interval 1)
  '(mark-even-if-inactive t)
  '(mark-ring-max 32)
@@ -230,11 +221,6 @@
 ;; (add-hook 'js2-mode-hook
 ;;           (lambda () (flymake-mode t)))
 ;; (lintnode-start)
-
-;; ;; flymake mode for haskell
-;; (autoload 'ghc-init "ghc" nil t)
-;; (add-hook 'haskell-mode-hook (lambda () (flymake-mode)))
-;; (ghc-init)
 
 ;; Enable disabled commands.
 (put 'set-goal-column 'disabled nil)
