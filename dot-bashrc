@@ -9,4 +9,5 @@ stty -ixon
 # Denote current git branch in shell prompt.
 source /etc/bash_completion.d/git
 PS1="${CYAN}\$(date +%H:%M) ${GREEN}\u@\h:${WHITE}\w${YELLOW}\$(__git_ps1)${NORMAL}> "
-xmodmap ~/.xmodmap-`uname -n`
+setxkbmap -model latitude
+setxkbmap -option ctrl:nocaps

@@ -1,19 +1,16 @@
 # It's amusing. Sue me.
 alias genocide=killall
 
-# Typoes are unfortunate.
-alias ndoe=node
-
-# Various FF versions
-alias ff6='~/workspace/browsers/firefox-6.0b5/firefox'
-alias ff8='~/workspace/browsers/firefox-8.0a1/firefox'
-
 # Various supposedly useful aliases
 alias rm='rm -i'
 alias df='df -h'
 
+alias ls='ls --color=auto'
 alias l='ls -al'
 alias ll='ls -l'
 
 alias ..='cd ..'
 alias ...='cd ../..'
+
+# Use hub.
+alias git=hub
