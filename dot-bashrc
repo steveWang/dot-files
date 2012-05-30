@@ -3,11 +3,7 @@ test -s ~/.colors && . ~/.colors || true
 test -s ~/.env && . ~/.env || true
 
 # Config starts here.
-# C-s is useful as incremental search.
-stty -ixon
 
 # Denote current git branch in shell prompt.
 source /etc/bash_completion.d/git
-PS1="${CYAN}\$(date +%H:%M) ${GREEN}\u@\h:${WHITE}\w${YELLOW}\$(__git_ps1)${NORMAL}> "
-setxkbmap -model latitude
-setxkbmap -option ctrl:nocaps
+PS1="${CYAN}\$(date +%H:%M) ${GREEN}\u@\h:${WHITE}\W${YELLOW}\$(__git_ps1)${NORMAL}> "

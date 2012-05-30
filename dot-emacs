@@ -11,6 +11,11 @@
                                 "/home/steve/local/lib/erlang/lib/tools-2.6.6.5/emacs"
                                 "/home/steve/.emacs.d/elisp/writegood-mode"))
 
+;; Transparency
+(set-frame-parameter (selected-frame) 'alpha '(95 65))
+(add-to-list 'default-frame-alist '(alpha 95 65))
+
+;; Crude window manipulation.
 (global-set-key (kbd "C-s-b") 'shrink-window-horizontally)
 (global-set-key (kbd "C-s-f") 'enlarge-window-horizontally)
 (global-set-key (kbd "C-s-n") 'shrink-window)
@@ -44,17 +49,17 @@
 ;; various useful customizations
 (blink-cursor-mode 0)
 (setq inhibit-startup-message t)
-(set-default 'truncate-lines t)
+;; (set-default 'truncate-lines t)
 (set-default 'column-number-mode t)
 
 ;; google chrome as default browser
 (defun browse-url-chrome (url &rest args)
   (interactive (browse-url-interactive-arg "url: "))
   (let ((browse-url-browser-function 'browse-url-generic)
-        (browse-url-generic-program "google-chrome"))
+        (browse-url-generic-program "chromium-browser"))
     (apply #'browse-url url args)))
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "google-chrome")
+      browse-url-generic-program "chromium-browser")
 
 (require 'writegood-mode)
 (global-set-key "\C-cg" 'writegood-mode)
@@ -72,11 +77,7 @@
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     ;; Use euphoria if in -nw mode, since blackboard is displayed
-     ;; poorly in this case.
-     (if window-system
-	 (color-theme-calm-forest)
-         (color-theme-euphoria))))
+     (color-theme-dark-laptop)))
 
 ;; jabber itself!
 (if window-system
@@ -94,7 +95,7 @@
 
 ;; various indenting / display stuff.
 (setq c-default-style "linux"
-      c-basic-offset 2
+      c-basic-offset 4
       js-indent-level 2)
 
 ;; indent cases of switch statements.
@@ -122,10 +123,11 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+ '(LaTeX-command "latex")
  '(TeX-PDF-mode t)
+ '(TeX-engine (quote default))
  '(auto-image-file-mode t)
- '(c-basic-offset 2)
- '(confirm-kill-emacs (quote y-or-n-p))
+ '(c-basic-offset 4)
  '(cperl-autoindent-on-semi t)
  '(cperl-font-lock nil)
  '(cperl-hairy t)
@@ -194,7 +196,7 @@
  '(rmail-remote-password-required nil)
  '(save-interprogram-paste-before-kill t)
  '(scroll-bar-mode nil)
- '(standard-indent 2)
+ '(standard-indent 4)
  '(tex-pdf-mode t t)
  '(tex-source-correlate-method (quote synctex))
  '(tex-source-correlate-mode t)
@@ -229,22 +231,7 @@
                                "module" "exports" "process" "__dirname"
                                "__filename" "$" "now" "MathJax" "Buffer"))
 
-(add-hook 'latex-mode-hook 'dvi-with-okular t)
-
-;; flymake mode for js. This is actually JSHint, hacked to work with
-;; lintnode. So this is hintnode, I guess?
-(require 'flymake-jslint)
-(set 'lintnode-running nil)
-(add-hook 'js2-mode-hook
-	  (lambda () 
-	    (or (if (not lintnode-running)
-		     (and (set 'lintnode-running t)
-			  (lintnode-start)))
-		(flymake-mode t))))
-
-
 ;; Enable disabled commands.
 (put 'set-goal-column 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
-

@@ -1,0 +1,8 @@
+#!/bin/sh
+sh ~/.fehbg &
+xcompmgr &
+xscreensaver -no-splash &
+xrandr --rate 40 &
+setxkbmap -model latitude
+setxkbmap -option ctrl:swapcaps
+exec xmonad 
