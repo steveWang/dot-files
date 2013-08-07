@@ -1,14 +1,15 @@
 # Adding various things to my path.
-export PATH=$HOME/local/rabbitmq/sbin:$HOME/local/gems/bin:$HOME/local/bin:$HOME/.cabal/bin:$PATH
+export PATH=$HOME/local/texlive/2012/bin/x86_64-linux:$HOME/local/gems/bin:$HOME/local/bin:$HOME/.cabal/bin:$PATH
 
 # Environment variables for the chunk of time in which I had to use Ruby.
 export GEM_HOME=$HOME/local/gems
 export RUBYOPT=rubygems
 
-export CPATH=/opt/AMDAPP/include:$CPATH
+export TERM=rxvt-unicode
 export GIT_PS1_SHOWDIRTYSTATE=true
 export EDITOR=emacs
-export PYTHONPATH=$HOME/local/lib64/python2.7/site-packages:$PYTHONPATH
+export PYTHONPATH=$HOME/local/lib/python2.7/site-packages:$PYTHONPATH
 
 export WINEARCH=win32
-export WINEDEBUG=fixme-all
+export AWT_TOOLKIT=MToolkit
+export _JAVA_AWT_WM_NONREPARENTING=1

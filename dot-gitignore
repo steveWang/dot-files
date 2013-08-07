@@ -127,3 +127,6 @@ results
 
 # Python #
 *.pyc
+
+# Erlang #
+*.beam
