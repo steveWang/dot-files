@@ -14,3 +14,4 @@ alias ...='cd ../..'
 
 # Use hub.
 alias git=hub
+alias pacman=powerpill

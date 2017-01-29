@@ -1,15 +1,11 @@
-# Adding various things to my path.
-export PATH=$HOME/local/texlive/2012/bin/x86_64-linux:$HOME/local/gems/bin:$HOME/local/bin:$HOME/.cabal/bin:$PATH
-
 # Environment variables for the chunk of time in which I had to use Ruby.
 export GEM_HOME=$HOME/local/gems
 export RUBYOPT=rubygems
 
 export TERM=rxvt-unicode
-export GIT_PS1_SHOWDIRTYSTATE=true
 export EDITOR=emacs
-export PYTHONPATH=$HOME/local/lib/python2.7/site-packages:$PYTHONPATH
 
 export WINEARCH=win32
 export AWT_TOOLKIT=MToolkit
 export _JAVA_AWT_WM_NONREPARENTING=1
+export PATH=/usr/local/texlive/2014/bin/x86_64-linux:$HOME/local/bin:$HOME/.cabal/bin:$PATH

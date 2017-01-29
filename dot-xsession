@@ -1,12 +1,18 @@
 #!/bin/sh
 
+# export DRI_PRIME=1;
+
+xset +dpms
+xset dpms 0 0 300
 sh ~/.fehbg &
 xcompmgr &
 xscreensaver -no-splash &
-setxkbmap -option ctrl:nocaps
-xsetroot -cursor_name left_ptr
-unclutter -grab &
-sudo dhclient em1
-urxvtd -q -f
-
-exec xmonad 
+setxkbmap -layout dvorak -option ctrl:nocaps &
+xsetroot -cursor_name left_ptr &
+# unclutter -grab &
+urxvtd -q -f -o &
+syndaemon -t -k -i 0.5 -d &
+redshift -l 42.36:-71.05 &
+emacs &
+firefox &
+exec xmonad
